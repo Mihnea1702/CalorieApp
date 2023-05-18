@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 @androidx.room.Database(entities =  {FoodEntity.class, UserEntity.class}, version = 1)
 public abstract class Database extends RoomDatabase {
 
-    private static final String dbName = "CaloriesApp";
+    private static final String dbName = "CaloriesAppTest";
     private static Database database;
 
     public static synchronized Database getAppDatabase(Context context){

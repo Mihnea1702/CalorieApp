@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText userId, password, name;
+    EditText userId, password, name,age,height,weight;
     Button register, login;
 
     @Override
@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         register = findViewById(R.id.register);
         login = findViewById(R.id.login);
+        age=findViewById(R.id.age);
+        height=findViewById(R.id.height);
+        weight=findViewById(R.id.weight);
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                 userEntity.setUsername(userId.getText().toString());
                 userEntity.setPassword(password.getText().toString());
                 userEntity.setName(name.getText().toString());
+                userEntity.setAge(Integer.valueOf(age.getText().toString()));
+                userEntity.setHeight(Integer.valueOf(height.getText().toString()));
+                userEntity.setWeight(Integer.valueOf(weight.getText().toString()));
                 if(validateInput(userEntity)){
                     Database database = Database.getAppDatabase(getApplicationContext());
                     UserDao userDao = database.userDao();

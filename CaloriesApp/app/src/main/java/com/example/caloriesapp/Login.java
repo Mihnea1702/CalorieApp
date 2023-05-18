@@ -46,7 +46,8 @@ public class Login extends AppCompatActivity {
                                     }
                                 });
                             } else {
-                                String name = userEntity.name;
+                                Double cal=1.5*(10*userEntity.weight+6.25*userEntity.height-5*userEntity.age-40);
+                                String name = userEntity.name+"-"+cal.toString();
                                 startActivity(new Intent(Login.this, HomeScreen.class).putExtra("name", name));
                             }
 

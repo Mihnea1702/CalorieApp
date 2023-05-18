@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeScreen extends AppCompatActivity {
 
-    TextView tName,food;
+    TextView tName,calories;
     Button allFood;
 
     @Override
@@ -20,9 +20,9 @@ public class HomeScreen extends AppCompatActivity {
 
         tName = findViewById(R.id.name);
         String name = getIntent().getStringExtra("name");
-        tName.setText(name);
+        int index=name.indexOf("-");
+        tName.setText(name.substring(0,index));
 
-        food= findViewById(R.id.food);
         allFood=findViewById(R.id.allFood);
         allFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,5 +30,8 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(new Intent(HomeScreen.this, AllFoods.class));
             }
         });
+
+        calories=findViewById(R.id.calories);
+        calories.setText(name.substring(index+1,name.length()));
     }
 }
