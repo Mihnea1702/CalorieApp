@@ -35,9 +35,25 @@ public class MainActivity extends AppCompatActivity {
                 userEntity.setUsername(userId.getText().toString());
                 userEntity.setPassword(password.getText().toString());
                 userEntity.setName(name.getText().toString());
+
+                try{
+                    Integer value1=Integer.parseInt(age.getText().toString());
+                    Integer value2=Integer.parseInt(height.getText().toString());
+                    Integer value3=Integer.parseInt(weight.getText().toString());
+                }
+                catch (NumberFormatException e){
+                    Toast.makeText(getApplicationContext(), "Incorrect!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 userEntity.setAge(Integer.valueOf(age.getText().toString()));
                 userEntity.setHeight(Integer.valueOf(height.getText().toString()));
                 userEntity.setWeight(Integer.valueOf(weight.getText().toString()));
+
+
+
+
                 if(validateInput(userEntity)){
                     Database database = Database.getAppDatabase(getApplicationContext());
                     UserDao userDao = database.userDao();
@@ -56,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
         });
